@@ -1,2 +1,4 @@
-# security-101-for-saas-startups-zh_CN
-security-101-for-saas-startups 的中文翻译，原仓库 https://github.com/forter/security-101-for-saas-startups
+# SaaS创业公司安全基础
+
+## 那些我希望我的第一任老板告诉过我的事情
+
