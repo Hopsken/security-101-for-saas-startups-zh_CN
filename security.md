@@ -258,6 +258,307 @@
 这份[可视化表单](https://fpf.org/wp-content/uploads/2016/04/FPF_Visual-Guide-to-Practical-Data-DeID.pdf)应该可以帮助到你。
 ！[privacy visual guide](https://raw.githubusercontent.com/Hopsken/security-101-for-saas-startups-zh_CN/master/images/image_2.png)
 
-* 告诉你的员工们，你不会因为谁犯了个错误就解雇谁。请求他们发生事故以后务必立马告知你，这样你就可以及时修复问题并把损失降低到最小。----- 解释清楚内部故意泄露数据和不幸的人为失误的区别。这一点很重要，因为不同的员工可能来自不同的文化和工作背景，如果不解释清楚的话，有可能他们会错误地处理这种问题。
+* 告诉你的员工们，你不会因为谁犯了个错误就解雇谁。请求他们发生事故以后务必立马告知你，这样你就可以及时修复问题并把损失降低到最小。坚守这份承诺。解释清楚内部故意泄露数据和不幸的人为失误的区别。这一点很重要，因为不同的员工可能来自不同的文化和工作背景，如果不解释清楚的话，有可能他们会错误地处理这种问题。
 
-* 通过修改或者识别数据来把潜在损失降低到最小。这通常需要管理者在没有“必要的”数据的情况也能做出正确的决定来帮助企业渡过难关。主要思想是
+* 通过修改或者识别数据来把潜在损失降低到最小。这通常需要管理者在没有“必要的”数据的情况也能做出正确的决定来帮助企业渡过难关。主要的观点是延迟对“机构味”的安全软件的需求，通过移除敏感信息，最起码是禁止大部分员工对那份数据的接入权限。
+
+* 恰当地使用正确的工具来避免数据泄漏：
+
+    * 从本地电脑移除数据，使用远程桌面工作而不是在本地桌面电脑。
+
+    * 使用浏览器隔离技术保证桌面电脑远离恶意软件。它会让你觉得是在使用常规浏览器在本地浏览，然而实际上，你看到的只是从远程电脑正在浏览的页面的图案。
+
+    * 在手机和移动电脑上使用[数据管家(Data Leak Prevention agents)](https://www.google.com/search?q=Gartner+Magic+Quadrant+for+Enterprise+Data+Loss+Prevention)来监控并预防数据泄漏。这需要在机构内所有设备上都安装上并且正确配置，以此来监控指定类型的数据。
+
+    * 使用[移动设备管理措施](https://www.google.com/search?q=gartner+enterprise+mobility+management)来监控并管理电脑与手机的应用权限和系统设置（锁屏／加密／VPN设置等）。Google G-Suite 自带了基础移动设备管理能力。
+
+    * 使用用户认证和权限管理来保护所有数据仓库。监控相关的数据处理和检查系统。
+
+    * 使用应用层来加密数据读取／写入操作，使用存储层和网络层加密来保护数据。
+
+### 预防
+
+* 参考 [OWASP 最佳实践](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project) 来进行安全代码工作。
+
+* 使用 WAF 和 DDoS 分流服务。
+
+* （在外部网络）运行外部危险项扫描。这可以保护你免受恶意脚本的侵犯。
+
+* 运行内部危险项扫描（在防火墙内）。这可以防止黑客接触到你的某个服务器的时候危害你的核心系统。这通常需要代理或者 ssh 连接，以及避开防火墙进行防火墙的能力。
+
+* 使用渗透测试和 BUG 奖励政策。你会付钱给那些试图找出你服务危险项的真实黑客。测试阶段你需要允许外部渗透测试服务商来尝试避开你的安全措施并利用那些危险项和错误配置。
+
+    * 某些情况下，你需要为渗透测试方提供 API key 来模拟客户账号被入侵的情形。黑客会利用他们的密钥来侵入你的系统。这就是灰度测试。
+
+    * 还有些情况下，你需要允许渗透测试方来审查你的代码库。价格依服务的复杂度、黑客的经验以及代码量而定。
+
+    * 奖励政策可以让你接触到那些有特别能力的黑客。
+
+* 经常升级你的依赖库。或者更进一步，使用机器人来自动化请求升级依赖库版本。
+
+* 扫描源码漏洞。一些服务商汇使用静态和动态分析来检查你的代码。另外一些则扫描经常使用的开源软件（如 SourceClear，BlackDuck，CheckMarx）。
+
+### 数据备份
+
+确保企业的重要数据被备份了（即使它意味着需要花些时间来恢复备份）：
+
+* 确保备份是自动化的，连续的，囊括了要求的数据集，从而避免丢失数据。
+
+* 确保备份位于另一个不同的云账户，从而避免人为误操作，甚至恶意删除数据。
+
+* 确保数据位于[不同区域的不同数据中心](http://docs.aws.amazon.com/AmazonS3/latest/dev/crr.html)，从而避免自然灾害造成的数据损失。
+
+* 你甚至可以选用不同云服务商来备份数据。比如，Google Cloud 就提供了[连续备份 Amazon S3 上数据](https://cloud.google.com/storage/transfer/)的服务。
+
+* 不是所有数据都是同等程度上关乎企业存亡的。如果数据量太大或者花费太高，那就从最重要的数据开始。
+
+* 确保所有的数据恢复操作都详细写出并经过测试。你不愿意看到在你需要恢复数据的时候原本认为可用的数据结果是无效的。
+
+* 几乎所有的资格鉴定或者大客户都会要求你提供一份年度数据备份／恢复报告。
+
+### 做好准备
+
+* 为所有云服务打开日志记录功能，即使它额外收费。集中管理所有应用和服务器的日志。存留至少一年内的日志。
+
+* 与你的法律顾问（律师事务所）和会记事务所协作，制定一份事故响应计划。这里列出了需要做的事情，包括事故调查、处理和损失控制。还包括了与顾客、终端用户和专家们的磋商等。大型的法律和会计公司有一连串的关系网和经验来帮助制定出这样的计划。
+
+## 阶段 5:“妈妈！我上电视啦！”
+
+当你有了明确的商业计划（巨大的商业成功）和可观的安全预算后，开始寻找一个适合你企业的首席安全官。这可能会花费你数月的时间。原因在于首先得考虑技术能力，还得承担 CEO／CTO 身上的部分责任。理所当然地，安全官必须认同你的企业文化。[这段视频](https://www.infoq.com/presentations/security-etsy)里面有个很好的例子。
+
+### 决定预算 —— 建立威胁模型
+
+威胁模型是你用来决定某项安全方面对策是否合理的首要原则。一个基本的模型就是区分攻击者。
+
+如果你被 FBI 等攻击，那么放弃吧。
+
+如果不是，你可以在投入一定资金的情况进行有效的防御。区分这两者攻击的一个方法在于考虑一种可行的，难以阻止的，非法的攻击，比如贿赂某位雇员。换句话说，如果贿赂雇员的成本要比暴力破解密码的成本要低，那么再花费资源在保护数据上就没什么意义了。
+
+### 决定预算 —— 多方面考虑
+
+* 记住，随着你企业的发展，你的受攻击面以及攻击动机也会同步增长。你的安全预算也需要随之改变。通过预算告知你的投资者们你对待安全问题的严肃态度。
+
+* 考察完整的风险评估，尝试首先堵上大的安全漏洞。那些通常是最容易被攻击，或者危害最大的（或者两者之和）。把你所有的注意力都集中于一个问题上，相当于请求你的攻击者使用下一个漏洞。
+
+* 一些源于顾客和受众的安全要求不一定非要放在风控首位上。举个例子，担心 Amazon 拷贝他们商业数据的顾客可能会要求 AWS 内部使用点对点加密传输数据。尽管 Amazon 内部人员有可能会窃取你的数据，或者一个精密的恶意软件突破了虚拟机的隔离，但是这不必放在你的安全清单的首位——尽管这位于客户需求的顶端。
+
+### 风险控制
+
+新任安全主管首先要做的一件事就是评估所有不同的风险以及其可能的表现形式。
+
+为了追求一个高的起点，你可以查看由 DBIR 报告提供的一份数据：
+![DBIR report industry stats](https://raw.githubusercontent.com/Hopsken/security-101-for-saas-startups-zh_CN/master/images/image_3.png)
+
+查看 [CIS CONTROLS FOR EFFECTIVE CYBER DEFENSE](https://www.cisecurity.org/critical-controls/) 附录 B、C 来获取基于 DBIR 报告的更多信息。
+
+接下来，让我们估测一下潜在的商业危害。这里有个例子：
+
+<table>
+  <tr>
+    <td>Attack</td>
+    <td>Attack Vectors/Actors</td>
+    <td>Expected number of attacks this year</td>
+    <td>Attack damage (w, existing mitigations)</td>
+    <td>Total damage this year</td>
+  </tr>
+  <tr>
+    <td>Fraud</td>
+    <td>CC Fraud
+Friendly Fraud
+Marketplace Fraud</td>
+    <td>High</td>
+    <td>Low</td>
+    <td>High</td>
+  </tr>
+  <tr>
+    <td>Downtime</td>
+    <td>Weather
+DDoS</td>
+    <td>Medium</td>
+    <td>Medium</td>
+    <td>Medium</td>
+  </tr>
+  <tr>
+    <td>Physical Theft</td>
+    <td>Office Thief
+Car Thief
+Home Thief
+Insider Misuse</td>
+    <td>Medium</td>
+    <td>Low</td>
+    <td>Low</td>
+  </tr>
+  <tr>
+    <td>IP Theft/Leak</td>
+    <td>Laptop Malware
+Mobile Malware
+Server Vulnerabilities
+Vendor Hacked</td>
+    <td>Low</td>
+    <td>High</td>
+    <td>Medium</td>
+  </tr>
+  <tr>
+    <td>(Customer) Data Theft/Leak</td>
+    <td>Laptop Malware
+Mobile Malware
+Server Vulnerabilities
+Vendor Hacked
+Datastore Leak</td>
+    <td>Medium</td>
+    <td>High</td>
+    <td>High</td>
+  </tr>
+  <tr>
+    <td>Business/HR/Internal Documents Theft/Leak</td>
+    <td>Laptop Malware
+Mobile
+Vendor Hacked</td>
+    <td>Medium</td>
+    <td>Medium</td>
+    <td>Medium</td>
+  </tr>
+  <tr>
+    <td>Data Destructed or Held Ransom</td>
+    <td>Server Vulnerabilities
+Credentials Theft
+Laptop Malware</td>
+    <td>Medium</td>
+    <td>Medium</td>
+    <td>Medium</td>
+  </tr>
+  <tr>
+    <td>Money Loss (Bitcoin, ec2 instances)</td>
+    <td>Credentials Theft
+Server Vulnerabilities</td>
+    <td>Medium</td>
+    <td>Medium</td>
+    <td>Medium</td>
+  </tr>
+  <tr>
+    <td>Customers hacked  through your service</td>
+    <td>Server Vulnerabilities
+Credentials Theft</td>
+    <td>Medium</td>
+    <td>High</td>
+    <td>High</td>
+  </tr>
+</table>
+
+
+The next phase details the prevention and exposure reduction techniques for each threat. This table is the basis for the work plan:
+
+<table>
+  <tr>
+    <td>Prevention</td>
+    <td>Exposure Reduction</td>
+    <td>Attack Vectors/Actors</td>
+  </tr>
+  <tr>
+    <td>Automatic Fraud Prevention</td>
+    <td>DIY Heuristic + Manual Review</td>
+    <td>Marketplace Fraud
+Friendly Fraud
+CC Fraud</td>
+  </tr>
+  <tr>
+    <td>Multi-Region (Active Active)</td>
+    <td>Failover Region Practice</td>
+    <td>Weather</td>
+  </tr>
+  <tr>
+    <td>DDoS protection</td>
+    <td>Talk with AWS account manager
+404/403 Alerts</td>
+    <td>DDoS</td>
+  </tr>
+  <tr>
+    <td>Alarm
+Door chip
+Separate laptop from 2FA (mobile phone)
+Lock</td>
+    <td>Move all servers and VPN to the cloud
+Disk Encryption
+Never leave laptop in car
+Pin code/Password
+Remote Wipe (company phones)</td>
+    <td>Office Theft
+Car Theft
+Home Theft</td>
+  </tr>
+  <tr>
+    <td>Privileged Access Management
+DLP
+</td>
+    <td>Treat employees nicely
+Access Logs
+MDM
+Off-boarding checklist
+Privacy Training
+New hire reference check
+NDAs</td>
+    <td>Employee Misuse
+Freelance Misuse
+Vendor Misuse</td>
+  </tr>
+  <tr>
+    <td>Move IP to enterprise data vault
+Endpoint Protection
+DLP</td>
+    <td>Least Privilege
+Access Logs
+Training
+Encrypted Data</td>
+    <td>Malware
+</td>
+  </tr>
+  <tr>
+    <td>OS/Docker automatic upgrades
+Libraries Upgrade
+External Vulnerability Scans
+Penetration Testing
+Security Bug Bounty</td>
+    <td>Vulnerabilities RSS feeds
+Failed Login alerts
+
+Backup in another cloud account/region
+
+Network Isolation (Security Groups/Subnets/ VPN/ Cloud Account)
+
+Internal Vulnerability Scans</td>
+    <td>Server Vulnerabilities</td>
+  </tr>
+  <tr>
+    <td>2FA
+Secure credentials on laptops
+Secure credentials on servers</td>
+    <td>Replace Admin passwords annually
+</td>
+    <td>Credentials Theft</td>
+  </tr>
+  <tr>
+    <td>Protect SQL/NoSQL with username/Password
+
+Require VPN 2FA to access them
+
+App Level Encryption</td>
+    <td>De-identification/Redaction/Deletion of unused data
+Don't create local copies
+
+Training
+
+Access Logs</td>
+    <td>Datastore Leak</td>
+  </tr>
+</table>
+
+
+# 贡献
+
+我们欢迎来自在创业公司工作的工程师们的各种建议，他们也是这篇文章的目标读者。请尽量保持精简并切中要害。在保障实际可行的同时，尽量不倾向任何服务商。欢迎各种建议。
+
+感谢原作者 Shahar Keidar、Avishai Ish-Shalom、Yogev Levi Shaked、Elad Shulman、Eliran Ben-Zikri 的工作。
+
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+
+
