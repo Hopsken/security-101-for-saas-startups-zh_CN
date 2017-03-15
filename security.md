@@ -256,7 +256,7 @@
 
 * 作为安全训练的一部分，告知你的雇员们哪些是私人信心，以及这些信息我们是怎么处理的。
 这份[可视化表单](https://fpf.org/wp-content/uploads/2016/04/FPF_Visual-Guide-to-Practical-Data-DeID.pdf)应该可以帮助到你。
-！[privacy visual guide](https://raw.githubusercontent.com/Hopsken/security-101-for-saas-startups-zh_CN/master/images/image_2.png)
+![privacy visual guide](https://raw.githubusercontent.com/Hopsken/security-101-for-saas-startups-zh_CN/master/images/image_2.png)
 
 * 告诉你的员工们，你不会因为谁犯了个错误就解雇谁。请求他们发生事故以后务必立马告知你，这样你就可以及时修复问题并把损失降低到最小。坚守这份承诺。解释清楚内部故意泄露数据和不幸的人为失误的区别。这一点很重要，因为不同的员工可能来自不同的文化和工作背景，如果不解释清楚的话，有可能他们会错误地处理这种问题。
 
