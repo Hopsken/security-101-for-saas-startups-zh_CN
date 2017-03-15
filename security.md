@@ -446,7 +446,7 @@ DDoS</td>
 <table>
   <tr>
     <td>预防</td>
-    <td>止损</td>
+    <td>对策</td>
     <td>攻击者</td>
   </tr>
   <tr>
