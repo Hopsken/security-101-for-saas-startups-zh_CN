@@ -355,200 +355,188 @@
 
 <table>
   <tr>
-    <td>Attack</td>
-    <td>Attack Vectors/Actors</td>
-    <td>Expected number of attacks this year</td>
-    <td>Attack damage (w, existing mitigations)</td>
-    <td>Total damage this year</td>
+    <td>攻击类型</td>
+    <td>攻击者</td>
+    <td>今年预计攻击次数</td>
+    <td>攻击危害性</td>
+    <td>今年总损害</td>
   </tr>
   <tr>
-    <td>Fraud</td>
-    <td>CC Fraud
-Friendly Fraud
-Marketplace Fraud</td>
-    <td>High</td>
-    <td>Low</td>
-    <td>High</td>
+    <td>欺骗</td>
+    <td>信用卡欺诈、市场欺诈、Friendly Fraud
+    </td>
+    <td>高</td>
+    <td>低</td>
+    <td>高</td>
   </tr>
   <tr>
-    <td>Downtime</td>
-    <td>Weather
+    <td>宕机</td>
+    <td>天气
 DDoS</td>
-    <td>Medium</td>
-    <td>Medium</td>
-    <td>Medium</td>
+    <td>中</td>
+    <td>中</td>
+    <td>中</td>
   </tr>
   <tr>
-    <td>Physical Theft</td>
-    <td>Office Thief
-Car Thief
-Home Thief
-Insider Misuse</td>
-    <td>Medium</td>
-    <td>Low</td>
-    <td>Low</td>
+    <td>现实偷窃</td>
+    <td>办公室偷窃
+车辆偷窃
+家庭偷窃
+内部误用</td>
+    <td>中</td>
+    <td>低</td>
+    <td>低</td>
   </tr>
   <tr>
-    <td>IP Theft/Leak</td>
-    <td>Laptop Malware
-Mobile Malware
-Server Vulnerabilities
-Vendor Hacked</td>
-    <td>Low</td>
-    <td>High</td>
-    <td>Medium</td>
+    <td>IP 泄漏</td>
+    <td>恶意软件
+服务器危险项
+服务商被黑</td>
+    <td>低</td>
+    <td>高</td>
+    <td>中</td>
   </tr>
   <tr>
-    <td>(Customer) Data Theft/Leak</td>
-    <td>Laptop Malware
-Mobile Malware
-Server Vulnerabilities
-Vendor Hacked
-Datastore Leak</td>
-    <td>Medium</td>
-    <td>High</td>
-    <td>High</td>
+    <td>（用户）数据泄漏</td>
+    <td>恶意软件
+服务器危险项
+服务商被黑
+数据库泄露</td>
+    <td>中</td>
+    <td>高</td>
+    <td>高</td>
   </tr>
   <tr>
-    <td>Business/HR/Internal Documents Theft/Leak</td>
-    <td>Laptop Malware
-Mobile
-Vendor Hacked</td>
-    <td>Medium</td>
-    <td>Medium</td>
-    <td>Medium</td>
+    <td>商业／HR／内部文件遭窃／泄漏</td>
+    <td>恶意软件
+服务商被黑</td>
+    <td>中</td>
+    <td>中</td>
+    <td>中</td>
   </tr>
   <tr>
-    <td>Data Destructed or Held Ransom</td>
-    <td>Server Vulnerabilities
-Credentials Theft
-Laptop Malware</td>
-    <td>Medium</td>
-    <td>Medium</td>
-    <td>Medium</td>
+    <td>数据被毁／要求赎回</td>
+    <td>服务器危险项
+证书被盗
+恶意软件</td>
+    <td>中</td>
+    <td>中</td>
+    <td>中</td>
   </tr>
   <tr>
-    <td>Money Loss (Bitcoin, ec2 instances)</td>
-    <td>Credentials Theft
-Server Vulnerabilities</td>
-    <td>Medium</td>
-    <td>Medium</td>
-    <td>Medium</td>
+    <td>资金损失（比特币，服务器实例）</td>
+    <td>证书被盗
+服务器危险项</td>
+    <td>中</td>
+    <td>中</td>
+    <td>中</td>
   </tr>
   <tr>
-    <td>Customers hacked  through your service</td>
-    <td>Server Vulnerabilities
-Credentials Theft</td>
-    <td>Medium</td>
-    <td>High</td>
-    <td>High</td>
+    <td>用户服务被黑</td>
+    <td>服务器危险项
+证书被盗</td>
+    <td>中</td>
+    <td>高</td>
+    <td>高</td>
   </tr>
 </table>
 
-
-The next phase details the prevention and exposure reduction techniques for each threat. This table is the basis for the work plan:
+接下来详细介绍如何应对各种威胁。这个表格是工作计划的基础：
 
 <table>
   <tr>
-    <td>Prevention</td>
-    <td>Exposure Reduction</td>
-    <td>Attack Vectors/Actors</td>
+    <td>预防</td>
+    <td>止损</td>
+    <td>攻击者</td>
   </tr>
   <tr>
-    <td>Automatic Fraud Prevention</td>
-    <td>DIY Heuristic + Manual Review</td>
-    <td>Marketplace Fraud
+    <td>自动预防欺诈</td>
+    <td>培养意识 + 手动检查</td>
+    <td>市场欺诈
 Friendly Fraud
-CC Fraud</td>
+信用卡</td>
   </tr>
   <tr>
-    <td>Multi-Region (Active Active)</td>
-    <td>Failover Region Practice</td>
-    <td>Weather</td>
+    <td>多区域服务</td>
+    <td>转移服务</td>
+    <td>天气</td>
   </tr>
   <tr>
-    <td>DDoS protection</td>
+    <td>DDoS 保护</td>
     <td>Talk with AWS account manager
 404/403 Alerts</td>
     <td>DDoS</td>
   </tr>
   <tr>
-    <td>Alarm
-Door chip
-Separate laptop from 2FA (mobile phone)
-Lock</td>
-    <td>Move all servers and VPN to the cloud
-Disk Encryption
-Never leave laptop in car
-Pin code/Password
-Remote Wipe (company phones)</td>
-    <td>Office Theft
-Car Theft
-Home Theft</td>
+    <td>警报门芯片
+两步验证
+锁定</td>
+    <td>将所有服务器和VPN转移到云服务上
+加密磁盘
+永远不要把电脑忘在车里
+Pin 密码
+远程抹除被盗手机数据</td>
+    <td>办公室盗窃、
+汽车盗窃、
+家庭盗窃</td>
   </tr>
   <tr>
-    <td>Privileged Access Management
-DLP
+    <td>接入权限管理、
+数据泄漏防护
 </td>
-    <td>Treat employees nicely
-Access Logs
-MDM
-Off-boarding checklist
-Privacy Training
-New hire reference check
+    <td>友善对待员工、
+记录日志、
+MDM（移动设备管理）、
+离职清单、
+隐私培训、
+新入职培训、
 NDAs</td>
-    <td>Employee Misuse
-Freelance Misuse
-Vendor Misuse</td>
+    <td>雇员误操作、
+兼职误操作、
+服务商操作</td>
   </tr>
   <tr>
-    <td>Move IP to enterprise data vault
-Endpoint Protection
-DLP</td>
-    <td>Least Privilege
-Access Logs
-Training
-Encrypted Data</td>
-    <td>Malware
+    <td>把 IP 移到企业数据保险库、
+终端保护、
+数据泄漏防护</td>
+    <td>最小特权原则、
+记录日志、
+培训、
+加密数据</td>
+    <td>恶意软件
 </td>
   </tr>
   <tr>
-    <td>OS/Docker automatic upgrades
-Libraries Upgrade
-External Vulnerability Scans
-Penetration Testing
-Security Bug Bounty</td>
-    <td>Vulnerabilities RSS feeds
-Failed Login alerts
-
-Backup in another cloud account/region
-
-Network Isolation (Security Groups/Subnets/ VPN/ Cloud Account)
-
-Internal Vulnerability Scans</td>
-    <td>Server Vulnerabilities</td>
+    <td>OS/Docker 自动升级、
+依赖升级、
+外部危险项扫描、
+渗透测试、
+安全漏洞奖励措施</td>
+    <td>危险项 RSS 订阅、
+失败登录警告、
+使用另一个地区／账号备份、
+网路隔离（安全部门、子网络、VPN
+云服务账号） 、
+内部危险项扫描</td>
+    <td>服务器危险项</td>
   </tr>
   <tr>
-    <td>2FA
-Secure credentials on laptops
-Secure credentials on servers</td>
-    <td>Replace Admin passwords annually
+    <td>两步验证、
+加密电脑证书、
+加密服务器证书</td>
+    <td>每年替换管理员密码
 </td>
-    <td>Credentials Theft</td>
+    <td>盗取证书</td>
   </tr>
   <tr>
-    <td>Protect SQL/NoSQL with username/Password
-
-Require VPN 2FA to access them
-
-App Level Encryption</td>
-    <td>De-identification/Redaction/Deletion of unused data
-Don't create local copies
-
-Training
-
-Access Logs</td>
-    <td>Datastore Leak</td>
+    <td>使用用户名／密码来加密 SQL／NoSQL、
+需要 VPN 两步验证来连接、
+应用层面=加密</td>
+    <td>检查无用数据、
+不要在创建本地拷贝、
+培训、
+记录日志</td>
+    <td>数据库泄露</td>
   </tr>
 </table>
 
