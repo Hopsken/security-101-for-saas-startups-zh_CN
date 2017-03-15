@@ -2,6 +2,7 @@
 
 ## 声明
 > 原仓库：https://github.com/forter/security-101-for-saas-startups
+> 
 > 本文由 [Hopsken](https://github.com/Hopsken) 基于源仓库翻译。由于译者水平有限，多有翻译不当之处，还请不吝赐教。
 
 ## 那些我希望我的第一任老板告诉我的事情
